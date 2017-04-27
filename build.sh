@@ -44,3 +44,4 @@ make all -j $MAKEOPTS
 make checkprogs -j $MAKEOPTS
 #Run tests
 make check
+cat test-suite.log
