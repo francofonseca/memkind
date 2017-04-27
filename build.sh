@@ -43,5 +43,5 @@ fi
 make all -j $MAKEOPTS
 make checkprogs -j $MAKEOPTS
 #Run tests
-make check
+travis_wait 30 make check
 cat test-suite.log
