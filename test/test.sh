@@ -134,6 +134,11 @@ function execute_gtest()
     ret_val=1
     TESTCMD=$1
     TEST=$2
+    echo "-----------------------LINEA COOL--------------------------"
+    echo $TEST
+    echo "-----------------------LINEA COOL--------------------------"
+    echo $TESTCMD
+    echo "-----------------------LINEA COOL--------------------------"
     # Apply filter (if provided)
     if [ "$TEST_FILTER" != "" ]; then
         if [[ $TEST != $TEST_FILTER ]]; then

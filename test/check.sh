@@ -43,6 +43,9 @@ if [ ! -x /usr/bin/memkind-hbw-nodes ]; then
         fi
 fi
 ret=$(memkind-hbw-nodes)
+echo "-----------------------LINEA CHECK--------------------------"
+echo $ret
+echo "-----------------------LINEA CHECK--------------------------"
 if [[ $ret == "" ]]; then
         # Add parameter that disables tests that detects high bandwidth nodes
         params=$params" -d"
