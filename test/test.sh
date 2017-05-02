@@ -142,38 +142,39 @@ function execute_gtest()
     if [ "$?" = 0 ]; then
         RESULT="$TEST,${green}EXCLUDED${default}"
         ret_val=0
-        return $ret_val
-    # Apply filter (if provided)
-    if [ "$TEST_FILTER" != "" ]; then
-        if [[ $TEST != $TEST_FILTER ]]; then
-            return
+    else
+        # Apply filter (if provided)
+        if [ "$TEST_FILTER" != "" ]; then
+            if [[ $TEST != $TEST_FILTER ]]; then
+                return
+            fi
         fi
-    fi
-    # Concatenate test command
-    TESTCMD=$(printf "$TESTCMD" "$TEST""$SKIPPED_GTESTS")
-    # And test prefix if applicable
-    if [ "$TEST_PREFIX" != "" ]; then
-        TESTCMD=$(printf "$TEST_PREFIX" "$TESTCMD")
-    fi
-    OUTPUT=`eval $TESTCMD`
-    PATOK='.*OK ].*'
-    PATFAILED='.*FAILED  ].*'
-        PATSKIPPED='.*PASSED  ] 0.*'
-    if [[ $OUTPUT =~ $PATOK ]]; then
-        RESULT="$TEST,${green}PASSED${default}"
-        ret_val=0
-    elif [[ $OUTPUT =~ $PATFAILED ]]; then
-        RESULT="$TEST,${red}FAILED${default}"
-    elif [[ $OUTPUT =~ $PATSKIPPED ]]; then
-        return 0
-    else
-        RESULT="$TEST,${red}CRASH${default}"
-    fi
-    if [ "$CSV" != "" ]; then
-        emit "$OUTPUT"
-        echo $RESULT >> $CSV
-    else
-        echo $RESULT
+        # Concatenate test command
+        TESTCMD=$(printf "$TESTCMD" "$TEST""$SKIPPED_GTESTS")
+        # And test prefix if applicable
+        if [ "$TEST_PREFIX" != "" ]; then
+            TESTCMD=$(printf "$TEST_PREFIX" "$TESTCMD")
+        fi
+        OUTPUT=`eval $TESTCMD`
+        PATOK='.*OK ].*'
+        PATFAILED='.*FAILED  ].*'
+            PATSKIPPED='.*PASSED  ] 0.*'
+        if [[ $OUTPUT =~ $PATOK ]]; then
+            RESULT="$TEST,${green}PASSED${default}"
+            ret_val=0
+        elif [[ $OUTPUT =~ $PATFAILED ]]; then
+            RESULT="$TEST,${red}FAILED${default}"
+        elif [[ $OUTPUT =~ $PATSKIPPED ]]; then
+            return 0
+        else
+            RESULT="$TEST,${red}CRASH${default}"
+        fi
+        if [ "$CSV" != "" ]; then
+            emit "$OUTPUT"
+            echo $RESULT >> $CSV
+        else
+            echo $RESULT
+        fi
     fi
     return $ret_val
 }
