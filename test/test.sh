@@ -134,11 +134,15 @@ function execute_gtest()
     ret_val=1
     TESTCMD=$1
     TEST=$2
+    TESTFILE="excluded_tests.txt"
     echo "-----------------------LINEA COOL--------------------------"
     echo $TEST
     echo "-----------------------LINEA COOL--------------------------"
-    echo $TESTCMD
-    echo "-----------------------LINEA COOL--------------------------"
+    grep -w $TEST $TESTFILE
+    if [ "$?" = 0 ]; then
+        RESULT="$TEST,${green}EXCLUDED${default}"
+        ret_val=0
+        return $ret_val
     # Apply filter (if provided)
     if [ "$TEST_FILTER" != "" ]; then
         if [[ $TEST != $TEST_FILTER ]]; then
