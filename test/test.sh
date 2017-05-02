@@ -136,15 +136,12 @@ function execute_gtest()
     TEST=$2
     TESTFILE="test/excluded_tests.txt"
     echo "-----------------------TEST--------------------------"
+    echo $TEST
+    echo "-----------------------TEST--------------------------"
     grep -w $TEST $TESTFILE
     if [ "$?" = 0 ]; then
         RESULT="$TEST,${green}EXCLUDED${default}"
-        if [ "$CSV" != "" ]; then
-            emit "$OUTPUT"
-            echo $RESULT >> $CSV
-        else
-            echo $RESULT
-        fi
+        echo $RESULT
         ret_val=0
     else
         # Apply filter (if provided)
