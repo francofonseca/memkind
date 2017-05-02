@@ -136,6 +136,8 @@ function execute_gtest()
     TEST=$2
     TESTFILE="excluded_tests.txt"
     echo "-----------------------LINEA COOL--------------------------"
+    pwd
+    echo "-----------------------LINEA PWD---------------------------"
     echo $TEST
     echo "-----------------------LINEA COOL--------------------------"
     grep -w $TEST $TESTFILE
