@@ -183,37 +183,45 @@ function execute_pytest()
     TESTCMD=$1
     TEST_SUITE=$2
     TEST=$3
-    # Apply filter (if provided)
-    if [ "$TEST_FILTER" != "" ]; then
-        if [[ $TEST_SUITE.$TEST != $TEST_FILTER ]]; then
-            return
-        fi
-    fi
-    # Concatenate test command
-    TESTCMD=$(printf "$TESTCMD" "$TEST$SKIPPED_PYTESTS")
-    # And test prefix if applicable
-    if [ "$TEST_PREFIX" != "" ]; then
-        TESTCMD=$(printf "$TEST_PREFIX" "$TESTCMD")
-    fi
-    OUTPUT=`eval $TESTCMD`
-    PATOK='.*1 passed.*'
-    PATFAILED='.*1 failed.*'
-    PATSKIPPED='.*deselected.*'
-    if [[ $OUTPUT =~ $PATOK ]]; then
-        RESULT="$TEST_SUITE.$TEST,${green}PASSED${default}"
-        ret=0
-    elif [[ $OUTPUT =~ $PATFAILED ]]; then
-        RESULT="$TEST_SUITE.$TEST,${red}FAILED${default}"
-    elif [[ $OUTPUT =~ $PATSKIPPED ]]; then
-        return 0
-    else
-        RESULT="$TEST_SUITE.$TEST,${red}CRASH${default}"
-    fi
-    if [ "$CSV" != "" ]; then
-        emit "$OUTPUT"
-        echo $RESULT >> $CSV
-    else
+    TESTFILE="test/excluded_tests.txt"
+    grep -w $TEST $TESTFILE > /dev/null
+    if [ "$?" = 0 ]; then
+        RESULT="$TEST,${yellow}EXCLUDED${default}"
         echo $RESULT
+        ret=0
+    else
+        # Apply filter (if provided)
+        if [ "$TEST_FILTER" != "" ]; then
+            if [[ $TEST_SUITE.$TEST != $TEST_FILTER ]]; then
+                return
+            fi
+        fi
+        # Concatenate test command
+        TESTCMD=$(printf "$TESTCMD" "$TEST$SKIPPED_PYTESTS")
+        # And test prefix if applicable
+        if [ "$TEST_PREFIX" != "" ]; then
+            TESTCMD=$(printf "$TEST_PREFIX" "$TESTCMD")
+        fi
+        OUTPUT=`eval $TESTCMD`
+        PATOK='.*1 passed.*'
+        PATFAILED='.*1 failed.*'
+        PATSKIPPED='.*deselected.*'
+        if [[ $OUTPUT =~ $PATOK ]]; then
+            RESULT="$TEST_SUITE.$TEST,${green}PASSED${default}"
+            ret=0
+        elif [[ $OUTPUT =~ $PATFAILED ]]; then
+            RESULT="$TEST_SUITE.$TEST,${red}FAILED${default}"
+        elif [[ $OUTPUT =~ $PATSKIPPED ]]; then
+            return 0
+        else
+            RESULT="$TEST_SUITE.$TEST,${red}CRASH${default}"
+        fi
+        if [ "$CSV" != "" ]; then
+            emit "$OUTPUT"
+            echo $RESULT >> $CSV
+        else
+            echo $RESULT
+        fi
     fi
     return $ret
 }
