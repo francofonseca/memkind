@@ -135,7 +135,7 @@ function execute_gtest()
     TESTCMD=$1
     TEST=$2
     TESTFILE="test/excluded_tests.txt"
-    grep -w $TEST $TESTFILE
+    grep -w $TEST $TESTFILE > /dev/null
     if [ "$?" = 0 ]; then
         RESULT="$TEST,${yellow}EXCLUDED${default}"
         echo $RESULT
