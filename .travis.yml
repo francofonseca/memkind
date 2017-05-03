@@ -5,6 +5,18 @@ before_install:
 install:
 script:
   - CXX="g++-4.8" CC="gcc-4.8" LDFLAGS="-lrt -Wl,--no-as-needed" MAKEOPTS="-l 1.5" ./build.sh
+  - echo "------------------TESTING-------------------"
+  - virtualenv --version
+  - echo "------------------TESTING-------------------"
+  - wget https://bootstrap.pypa.io/get-pip.py
+  - python get-pip.py
+  - echo "------------------TESTING-------------------"
+  - pip install -U pytest
+  - echo "------------------TESTING-------------------"
+  - pip install virtualenv
+  - echo "------------------TESTING-------------------"
+  - virtualenv --version
+  - echo "------------------TESTING-------------------"
   - travis_wait 60 make check
   - cat test-suite.log
 after_failure:
