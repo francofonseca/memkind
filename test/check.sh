@@ -48,12 +48,15 @@ if [[ $ret == "" ]]; then
         # Add parameter that disables tests that detects high bandwidth nodes
         params=$params" -d"
 fi
-
+echo "--------------------DUMMY LINE------------------------"
 if [[ -n $DISABLE_TESTS ]]; then
         echo "On demand test disabling detected!"
+        echo "--------------------DISABLE TESTS------------------------"
+        echo $DISABLE_TESTS
+        echo "--------------------DISABLE TESTS------------------------"
         params="$params -x $DISABLE_TESTS"
 fi
-
+echo "--------------------DUMMY LINE------------------------"
 $basedir/test.sh $params
 
 err=${PIPESTATUS[0]}
