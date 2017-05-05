@@ -22,11 +22,6 @@
 #  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-DISABLE_TESTS="BATest.test_TC_MEMKIND_calloc_DEFAULT_PREFERRED_LOCAL_4096_bytes:
-BATest.test_TC_MEMKIND_calloc_DEFAULT_PREFERRED_LOCAL_4194305_bytes:
-BATest.test_TC_MEMKIND_calloc_DEFAULT_PREFERRED_LOCAL_PAGE_SIZE_2MB_4096_bytes:
-BATest.test_TC_MEMKIND_calloc_DEFAULT_PREFERRED_LOCAL_PAGE_SIZE_2MB_4194305_bytes"
-
 err=0
 basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -53,6 +48,11 @@ if [[ $ret == "" ]]; then
         # Add parameter that disables tests that detects high bandwidth nodes
         params=$params" -d"
 fi
+export DISABLE_TESTS="BATest.test_TC_MEMKIND_calloc_DEFAULT_PREFERRED_LOCAL_4096_bytes:
+BATest.test_TC_MEMKIND_calloc_DEFAULT_PREFERRED_LOCAL_4194305_bytes:
+BATest.test_TC_MEMKIND_calloc_DEFAULT_PREFERRED_LOCAL_PAGE_SIZE_2MB_4096_bytes:
+BATest.test_TC_MEMKIND_calloc_DEFAULT_PREFERRED_LOCAL_PAGE_SIZE_2MB_4194305_bytes"
+
 if [[ -n $DISABLE_TESTS ]]; then
         echo "On demand test disabling detected!"
         params="$params -x $DISABLE_TESTS"
