@@ -48,10 +48,10 @@ if [[ $ret == "" ]]; then
         # Add parameter that disables tests that detects high bandwidth nodes
         params=$params" -d"
 fi
-export DISABLE_TESTS="BATest.test_TC_MEMKIND_calloc_DEFAULT_PREFERRED_LOCAL_4096_bytes:
-BATest.test_TC_MEMKIND_calloc_DEFAULT_PREFERRED_LOCAL_4194305_bytes:
-BATest.test_TC_MEMKIND_calloc_DEFAULT_PREFERRED_LOCAL_PAGE_SIZE_2MB_4096_bytes:
-BATest.test_TC_MEMKIND_calloc_DEFAULT_PREFERRED_LOCAL_PAGE_SIZE_2MB_4194305_bytes"
+DISABLE_TESTS="test_TC_MEMKIND_calloc_DEFAULT_PREFERRED_LOCAL_4096_bytes:
+test_TC_MEMKIND_calloc_DEFAULT_PREFERRED_LOCAL_4194305_bytes:
+test_TC_MEMKIND_calloc_DEFAULT_PREFERRED_LOCAL_PAGE_SIZE_2MB_4096_bytes:
+test_TC_MEMKIND_calloc_DEFAULT_PREFERRED_LOCAL_PAGE_SIZE_2MB_4194305_bytes"
 
 if [[ -n $DISABLE_TESTS ]]; then
         echo "On demand test disabling detected!"
