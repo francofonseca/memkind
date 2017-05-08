@@ -169,10 +169,14 @@ export DISABLE_TESTS="BATest.test_TC_MEMKIND_malloc_DEFAULT_PREFERRED_LOCAL_4096
 "BABindTest.test_TC_MEMKIND_HBW_Bind_CallocIncremental:"\
 "BABindTest.test_TC_MEMKIND_HBW_Bind_ReallocIncremental:"\
 "BABindTest.test_TC_MEMKIND_HBW_Bind_MemalignIncremental:"\
-"Test_autohbw.test_TC_MEMKIND_autohbw_malloc_and_free:"\
-"Test_autohbw.test_TC_MEMKIND_autohbw_calloc_and_free:"\
-"Test_autohbw.test_TC_MEMKIND_autohbw_realloc_and_free:"\
-"Test_autohbw.test_TC_MEMKIND_autohbw_posix_memalign_and_free"
+"HbwVerifyFunctionTest.test_TC_MEMKIND_HBW_page_size_round:"\
+"HbwVerifyFunctionTest.test_TC_MEMKIND_HBW_many_blocks_round:"\
+"HbwVerifyFunctionTest.test_TC_MEMKIND_HBW_many_blocks_not_round:"\
+"HbwVerifyFunctionTest.test_TC_MEMKIND_HBW_iterate_not_round:"\
+"test_TC_MEMKIND_autohbw_malloc_and_free:"\
+"test_TC_MEMKIND_autohbw_calloc_and_free:"\
+"test_TC_MEMKIND_autohbw_realloc_and_free:"\
+"test_TC_MEMKIND_autohbw_posix_memalign_and_free"
 
 err=0
 basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
