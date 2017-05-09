@@ -206,6 +206,12 @@ if [[ $ret == "" ]]; then
 fi
 
 if [[ -n $DISABLE_TESTS ]]; then
+        echo "-------------DUMMY PRINT-------------"
+        params="$params -d $DISABLE_TESTS"
+        echo "-------------DUMMY PRINT-------------"
+fi
+
+if [[ -n $DISABLE_TESTS ]]; then
         echo "On demand test disabling detected!"
         params="$params -x $DISABLE_TESTS"
 fi
