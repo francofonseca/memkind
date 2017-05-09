@@ -172,8 +172,9 @@ export DISABLE_TESTS="BATest.test_TC_MEMKIND_malloc_DEFAULT_PREFERRED_LOCAL_4096
 "HbwVerifyFunctionTest.test_TC_MEMKIND_HBW_page_size_round:"\
 "HbwVerifyFunctionTest.test_TC_MEMKIND_HBW_many_blocks_round:"\
 "HbwVerifyFunctionTest.test_TC_MEMKIND_HBW_many_blocks_not_round:"\
-"HbwVerifyFunctionTest.test_TC_MEMKIND_HBW_iterate_not_round:"\
-"test_TC_MEMKIND_autohbw_malloc_and_free:"\
+"HbwVerifyFunctionTest.test_TC_MEMKIND_HBW_iterate_not_round:"
+
+export SKIPPED_PYTEST="test_TC_MEMKIND_autohbw_malloc_and_free:"\
 "test_TC_MEMKIND_autohbw_calloc_and_free:"\
 "test_TC_MEMKIND_autohbw_realloc_and_free:"\
 "test_TC_MEMKIND_autohbw_posix_memalign_and_free"
@@ -203,12 +204,6 @@ echo $ret
 if [[ $ret == "" ]]; then
         # Add parameter that disables tests that detects high bandwidth nodes
         params=$params" -d"
-fi
-
-if [[ -n $DISABLE_TESTS ]]; then
-        echo "-------------DUMMY PRINT-------------"
-        params="$params -d $DISABLE_TESTS"
-        echo "-------------DUMMY PRINT-------------"
 fi
 
 if [[ -n $DISABLE_TESTS ]]; then
