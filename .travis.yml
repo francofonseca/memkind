@@ -158,7 +158,7 @@ script:
     Test_autohbw.test_TC_MEMKIND_autohbw_calloc_and_free:
     Test_autohbw.test_TC_MEMKIND_autohbw_realloc_and_free:
     Test_autohbw.test_TC_MEMKIND_autohbw_posix_memalign_and_free"
-  - export DISABLE_TESTS = ${DISABLE_TESTS//[[:space:]]/}
+  - export DISABLE_TESTS=${DISABLE_TESTS//[[:space:]]/}
   - echo "----------------------- TESTS -----------------------"
   - echo $DISABLE_TESTS
   - echo "----------------------- TESTS -----------------------"
