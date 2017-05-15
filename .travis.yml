@@ -158,6 +158,9 @@ script:
     Test_autohbw.test_TC_MEMKIND_autohbw_calloc_and_free:
     Test_autohbw.test_TC_MEMKIND_autohbw_realloc_and_free:
     Test_autohbw.test_TC_MEMKIND_autohbw_posix_memalign_and_free"
+  - echo "----------------------- TESTS -----------------------"
+  - echo $DISABLE_TESTS
+  - echo "----------------------- TESTS -----------------------"
   - travis_wait 60 make check
   - cat test-suite.log
 after_failure:
