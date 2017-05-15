@@ -6,7 +6,7 @@ before_install:
 install:
 env:
   global:  
-    - "|"
+    - >
       DISABLE_TESTS="BATest.test_TC_MEMKIND_malloc_DEFAULT_PREFERRED_LOCAL_4096_bytes:
       BATest.test_TC_MEMKIND_malloc_DEFAULT_PREFERRED_LOCAL_4194305_bytes:
       BATest.test_TC_MEMKIND_malloc_DEFAULT_PREFERRED_LOCAL_PAGE_SIZE_2MB_4096_bytes:
