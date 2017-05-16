@@ -50,10 +50,6 @@ if [[ $ret == "" ]]; then
         params=$params" -d"
 fi
 
-echo "----------------------- TESTS -----------------------"
-echo $DISABLE_TESTS
-echo "----------------------- TESTS -----------------------"
-
 if [[ -n $DISABLE_TESTS ]]; then
         echo "On demand test disabling detected!"
         params="$params -x $DISABLE_TESTS"
