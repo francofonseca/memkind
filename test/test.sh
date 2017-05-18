@@ -287,9 +287,7 @@ while true; do
             echo "---------------------- LINE IN -D 2 ----------------------"
             echo $SKIPPED_PYTESTS
             echo "---------------------- LINE IN -D 2 ----------------------"
-            show_skipped_tests "test_TC_MEMKIND_hbw_detection"          
-            shift
-            show_skipped_tests "test_TC_MEMKIND_autohbw"
+            show_skipped_tests "test_TC_MEMKIND_hbw_detection, test_TC_MEMKIND_autohbw"          
             shift
             ;;
         -x)
