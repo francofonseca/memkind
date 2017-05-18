@@ -280,14 +280,16 @@ while true; do
             echo $SKIPPED_PYTESTS
             echo "---------------------- LINE IN -D ----------------------"
             if [[ $SKIPPED_PYTESTS == "" ]]; then
-                SKIPPED_PYTESTS=" and not hbw_detection"
+                SKIPPED_PYTESTS=" and not hbw_detection and not autohbw"
             else
-                SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not hbw_detection"
+                SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not hbw_detection and not autohbw"
             fi
             echo "---------------------- LINE IN -D 2 ----------------------"
             echo $SKIPPED_PYTESTS
             echo "---------------------- LINE IN -D 2 ----------------------"
-            show_skipped_tests "test_TC_MEMKIND_hbw_detection"
+            show_skipped_tests "test_TC_MEMKIND_hbw_detection"          
+            shift
+            show_skipped_tests "test_TC_MEMKIND_autohbw"
             shift
             ;;
         -x)
