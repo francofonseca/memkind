@@ -281,7 +281,7 @@ while true; do
             else
                 SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not hbw_detection"
             fi
-            if [[ $DISABLE_PYTEST_TESTS != "" ]]
+            if [[ $DISABLE_PYTEST_TESTS != "" ]]; then
                 SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not "$DISABLE_PYTEST_TEST
             fi
             show_skipped_tests "test_TC_MEMKIND_hbw_detection, "$DISABLE_PYTEST_TESTS
