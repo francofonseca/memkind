@@ -276,18 +276,15 @@ while true; do
             ;;
         -d)
             echo "Skipping tests that detect high bandwidth memory nodes due to unsatisfactory system conditions"
-            echo "---------------------- LINE IN -D ----------------------"
-            echo $SKIPPED_PYTESTS
-            echo "---------------------- LINE IN -D ----------------------"
             if [[ $SKIPPED_PYTESTS == "" ]]; then
-                SKIPPED_PYTESTS=" and not hbw_detection and not autohbw"
+                SKIPPED_PYTESTS=" and not hbw_detection"
             else
-                SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not hbw_detection and not autohbw"
+                SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not hbw_detection"
             fi
-            echo "---------------------- LINE IN -D 2 ----------------------"
-            echo $SKIPPED_PYTESTS
-            echo "---------------------- LINE IN -D 2 ----------------------"
-            show_skipped_tests "test_TC_MEMKIND_hbw_detection, test_TC_MEMKIND_autohbw"          
+            if [[ $DISABLE_PYTEST_TESTS != "" ]]
+                SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not "$DISABLE_PYTEST_TEST
+            fi
+            show_skipped_tests "test_TC_MEMKIND_hbw_detection, "$DISABLE_PYTEST_TESTS
             shift
             ;;
         -x)
