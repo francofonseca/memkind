@@ -50,9 +50,9 @@ if [[ $ret == "" ]]; then
         params=$params" -d"
 fi
 
-if [[ -n $DISABLE_TESTS ]]; then
+if [[ -n $DISABLE_GTEST_TESTS ]]; then
         echo "On demand test disabling detected!"
-        params="$params -x $DISABLE_TESTS"
+        params="$params -x $DISABLE_GTEST_TESTS"
 fi
 $basedir/test.sh $params
 
