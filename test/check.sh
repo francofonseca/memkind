@@ -47,6 +47,9 @@ ret=$(memkind-hbw-nodes)
 echo $ret
 if [[ $ret == "" ]]; then
         # Add parameter that disables tests that detects high bandwidth nodes
+        echo "---------------------- LINE IN CHECK ----------------------"
+        echo $params
+        echo "---------------------- LINE IN CHECK ----------------------"
         params=$params" -d"
 fi
 
