@@ -287,7 +287,7 @@ while true; do
                 CURRENT_TEST=""
                 while true;do
                     UPPER_LIMIT_STRING=`expr index "${DISABLE_PYTEST_TESTS:$BOTTOM_LIMIT_STRING}" , `
-                    if [[ "$UPPER_LIMIT_STRING" != "0"]]; then
+                    if [[ "$UPPER_LIMIT_STRING" != "0" ]]; then
                         UPPER_LIMIT_STRING=`expr $UPPER_LIMIT - 1`
                         CURRENT_TEST=${DISABLE_PYTEST_TESTS:$BOTTOM_LIMIT_STRING:$UPPER_LIMIT_STRING}
                         SKIPPED_PYTESTS=$SKIPPED_TESTS" and not "$CURRENT_TEST
