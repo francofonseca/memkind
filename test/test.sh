@@ -282,7 +282,7 @@ while true; do
                 SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not hbw_detection"
             fi
             if [[ $DISABLE_PYTEST_TESTS != "" ]]; then
-                SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not autohbw"
+                SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not "$DISABLE_PYTEST_TESTS
             fi
             echo "---------------------------- LINEA TEST.SH ----------------------------"
             echo $DISABLE_PYTEST_TESTS
