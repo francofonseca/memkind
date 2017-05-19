@@ -288,13 +288,13 @@ while true; do
                 while true;do
                     UPPER_LIMIT_STRING=`expr index "${DISABLE_PYTEST_TESTS:$BOTTOM_LIMIT_STRING}" , `
                     if [[ "$UPPER_LIMIT_STRING" != "0" ]]; then
-                        UPPER_LIMIT_STRING=`expr $UPPER_LIMIT - 1`
+                        UPPER_LIMIT_STRING=`expr $UPPER_LIMIT_STRING - 1`
                         CURRENT_TEST=${DISABLE_PYTEST_TESTS:$BOTTOM_LIMIT_STRING:$UPPER_LIMIT_STRING}
-                        SKIPPED_PYTESTS=$SKIPPED_TESTS" and not "$CURRENT_TEST
-                        BOTTOM_LIMIT_STRING=`expr $BOTTOM_LIMIT + $UPPER_LIMIT_STRING + 1`
+                        SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not "$CURRENT_TEST
+                        BOTTOM_LIMIT_STRING=`expr $BOTTOM_LIMIT_STRING + $UPPER_LIMIT_STRING + 1`
                     else
                         CURRENT_TEST=${DISABLE_PYTEST_TESTS:$BOTTOM_LIMIT_STRING}
-                        SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not "$CURRENT_TESTS
+                        SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not "$CURRENT_TEST
                         break
                     fi
                 done
