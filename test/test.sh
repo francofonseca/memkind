@@ -287,7 +287,7 @@ while true; do
             echo "---------------------------- LINEA TEST.SH ----------------------------"
             echo $DISABLE_PYTEST_TESTS
             echo "---------------------------- LINEA TEST.SH ----------------------------"
-            show_skipped_tests "test_TC_MEMKIND_hbw_detection, "$DISABLE_PYTEST_TESTS
+            show_skipped_tests "test_TC_MEMKIND_hbw_detection,"$DISABLE_PYTEST_TESTS
             shift
             ;;
         -x)
