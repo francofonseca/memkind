@@ -282,11 +282,23 @@ while true; do
                 SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not hbw_detection"
             fi
             if [[ $DISABLE_PYTEST_TESTS != "" ]]; then
-                SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not "$DISABLE_PYTEST_TESTS
+                UPPER_LIMIT_STRING=0
+                BOTTOM_LIMIT_STRING=0
+                CURRENT_TEST=""
+                while [ "1"  ];do
+                    UPPER_LIMIT_STRING=`expr index "${DISABLE_PYTEST_TESTS:$BOTTOM_LIMIT_STRING}" , `
+                    if [ "$UPPER_LIMIT_STRING" != "0"]; then
+                        UPPER_LIMIT_STRING=`expr $UPPER_LIMIT - 1`
+                        CURRENT_TEST=${DISABLE_PYTEST_TESTS:$BOTTOM_LIMIT_STRING:$UPPER_LIMIT_STRING}
+                        SKIPPED_PYTESTS=$SKIPPED_TESTS" and not "$CURRENT_TEST
+                        BOTTOM_LIMIT_STRING=`expr $BOTTOM_LIMIT + $UPPER_LIMIT_STRING + 1`
+                    else
+                        CURRENT_TEST=${DISABLE_PYTEST_TESTS:$BOTTOM_LIMIT_STRING}
+                        SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not "$CURRENT_TESTS
+                        break
+                    fi
+                done
             fi
-            echo "---------------------------- LINEA TEST.SH ----------------------------"
-            echo $DISABLE_PYTEST_TESTS
-            echo "---------------------------- LINEA TEST.SH ----------------------------"
             show_skipped_tests "test_TC_MEMKIND_hbw_detection,"$DISABLE_PYTEST_TESTS
             shift
             ;;
