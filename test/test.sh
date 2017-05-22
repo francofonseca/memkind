@@ -287,6 +287,11 @@ while true; do
         -p)
             echo "--------------- DEBUG LINE ---------------"
             echo "Skipping some python tests '$DISABLE_PYTEST_TESTS' "
+            if [[ $SKIPPED_PYTESTS == "" ]]; then
+                SKIPPED_PYTESTS=$DISABLE_PYTEST_TESTS
+            else
+                SKIPPED_PYTESTS=$SKIPPED_PYTESTS$DISABLE_PYTEST_TESTS
+            fi
             show_skipped_tests $DISABLE_PYTEST_TESTS
             shift
             ;;
