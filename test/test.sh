@@ -45,7 +45,7 @@ err=0
 function usage () {
    cat <<EOF
 
-Usage: $PROGNAME [-c csv_file] [-l log_file] [-f test_filter] [-T tests_dir] [-d] [-m] [-g] [-h]
+Usage: $PROGNAME [-c csv_file] [-l log_file] [-f test_filter] [-T tests_dir] [-d] [-m] [-g] [-h] [-p]
 
 OPTIONS
     -c,
@@ -60,11 +60,13 @@ OPTIONS
         skip high bandwidth memory nodes detection tests
     -m,
         skip tests that require 2MB pages configured on the machine
+    -p,
+        skip python tests
     -x,
         skip tests that are passed as value
     -h,
         parameter added to display script usage
-
+    
 EOF
 }
 
