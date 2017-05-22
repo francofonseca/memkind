@@ -285,6 +285,7 @@ while true; do
             shift
             ;;
         -p)
+            echo "--------------- DEBUG LINE ---------------"
             echo "Skipping some python tests '$DISABLE_PYTEST_TESTS' "
             show_skipped_tests $DISABLE_PYTEST_TESTS
             shift
