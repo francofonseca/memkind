@@ -280,29 +280,13 @@ while true; do
                 SKIPPED_PYTESTS=" and not hbw_detection"
             else
                 SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not hbw_detection"
-            fi
-            if [[ $DISABLE_PYTEST_TESTS != "" ]]; then
-                UPPER_LIMIT_STRING=0
-                BOTTOM_LIMIT_STRING=0
-                CURRENT_TEST=""
-                while true; do
-                    UPPER_LIMIT_STRING=`expr index "${DISABLE_PYTEST_TESTS:$BOTTOM_LIMIT_STRING}" , `
-                    if [[ "$UPPER_LIMIT_STRING" != "0" ]]; then
-                        UPPER_LIMIT_STRING=`expr $UPPER_LIMIT_STRING - 1`
-                        CURRENT_TEST=${DISABLE_PYTEST_TESTS:$BOTTOM_LIMIT_STRING:$UPPER_LIMIT_STRING}
-                        SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not "$CURRENT_TEST
-                        BOTTOM_LIMIT_STRING=`expr $BOTTOM_LIMIT_STRING + $UPPER_LIMIT_STRING + 1`
-                    else
-                        CURRENT_TEST=${DISABLE_PYTEST_TESTS:$BOTTOM_LIMIT_STRING}
-                        SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not "$CURRENT_TEST
-                        break
-                    fi
-                done
-            fi
-            echo "---------------------------------- LINEA ----------------------------------"
-            echo $SKIPPED_PYTESTS
-            echo "---------------------------------- LINEA ----------------------------------"
-            show_skipped_tests "test_TC_MEMKIND_hbw_detection"$SKIPPED_PYTESTS
+            fi            
+            show_skipped_tests "test_TC_MEMKIND_hbw_detection"
+            shift
+            ;;
+        -p)
+            echo "Skipping some python tests '$DISABLE_PYTEST_TESTS' "
+            show_skipped_tests $DISABLE_PYTEST_TESTS
             shift
             ;;
         -x)
