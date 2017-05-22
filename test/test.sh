@@ -285,7 +285,7 @@ while true; do
                 UPPER_LIMIT_STRING=0
                 BOTTOM_LIMIT_STRING=0
                 CURRENT_TEST=""
-                while true;do
+                while true; do
                     UPPER_LIMIT_STRING=`expr index "${DISABLE_PYTEST_TESTS:$BOTTOM_LIMIT_STRING}" , `
                     if [[ "$UPPER_LIMIT_STRING" != "0" ]]; then
                         UPPER_LIMIT_STRING=`expr $UPPER_LIMIT_STRING - 1`
@@ -302,7 +302,7 @@ while true; do
             echo "---------------------------------- LINEA ----------------------------------"
             echo $SKIPPED_PYTESTS
             echo "---------------------------------- LINEA ----------------------------------"
-            show_skipped_tests "test_TC_MEMKIND_hbw_detection,"$DISABLE_PYTEST_TESTS
+            show_skipped_tests "test_TC_MEMKIND_hbw_detection"$SKIPPED_PYTESTS
             shift
             ;;
         -x)
