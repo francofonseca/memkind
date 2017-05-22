@@ -52,7 +52,7 @@ fi
 
 if [[ -n $DISABLE_PYTEST_TESTS ]]; then
         echo "Python test disabling env var detected"
-        params="$params -p $DISABLE_PYTHON_TESTS"
+        params="$params -p $DISABLE_PYTEST_TESTS"
 
 if [[ -n $DISABLE_GTEST_TESTS ]]; then
         echo "On demand test disabling detected!"
