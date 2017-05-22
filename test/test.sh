@@ -233,7 +233,7 @@ if [[ $ret == "" ]]; then
 fi
 
 # Execute getopt
-ARGS=$(getopt -o T:c:f:l:hdmgxp: -- "$@");
+ARGS=$(getopt -o T:c:f:l:p:hdmgx: -- "$@");
 
 #Bad arguments
 if [ $? -ne 0 ];
