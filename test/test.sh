@@ -302,7 +302,7 @@ while true; do
             else
                 SKIPPED_PYTESTS=$SKIPPED_PYTESTS$DISABLE_PYTEST_TESTS
             fi
-            show_skipped_tests $DISABLE_PYTEST_TESTS
+            show_skipped_tests "test_TC_MEMKIND_autohbw"
             shift 2;
             ;;
         -x)
