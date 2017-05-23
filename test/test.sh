@@ -232,7 +232,7 @@ if [[ $ret == "" ]]; then
     TEST_PREFIX="numactl --membind=0 %s"
 fi
 # Execute getopt
-ARGS=$(getopt -o T:c:f:l:hdmgpx: -- "$@");
+ARGS=$(getopt -o T:c:f:l:hdmgx: -- "$@");
 
 #Bad arguments
 if [ $? -ne 0 ];
