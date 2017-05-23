@@ -232,7 +232,7 @@ if [[ $ret == "" ]]; then
     TEST_PREFIX="numactl --membind=0 %s"
 fi
 # Execute getopt
-ARGS=$(getopt -o T:c:f:l:hdmgx:p: -- "$@");
+ARGS=$(getopt -o T:c:f:l:hdmgx: -- "$@");
 
 #Bad arguments
 if [ $? -ne 0 ];
@@ -242,7 +242,13 @@ fi
 
 eval set -- "$ARGS";
 
+
 while true; do
+    
+    echo "--------------- DEBUG LINE1 ---------------"
+    echo $1
+    echo "--------------- DEBUG LINE1 ---------------"
+
     case "$1" in
         -T)
             TEST_PATH=$2;
