@@ -231,11 +231,8 @@ if [[ $ret == "" ]]; then
     export MEMKIND_HBW_NODES=1
     TEST_PREFIX="numactl --membind=0 %s"
 fi
-echo "------------------------ DEBUG LINE ------------------------"
-echo $@
-echo "------------------------ DEBUG LINE ------------------------"
 # Execute getopt
-ARGS=$(getopt -o T:c:f:l:hdmgxp: -- "$@");
+ARGS=$(getopt -o T:c:f:l:hdmgpx: -- "$@");
 
 #Bad arguments
 if [ $? -ne 0 ];
@@ -243,19 +240,7 @@ then
     usage
 fi
 
-echo "------------------------ DEBUG LINE ------------------------"
-echo $ARGS
-echo "------------------------ DEBUG LINE ------------------------"
-
 eval set -- "$ARGS";
-
-echo "------------------------ DEBUG LINE ------------------------"
-echo $ARGS
-echo "------------------------ DEBUG LINE ------------------------"
-
-echo "------------------------ DEBUG LINE ------------------------"
-echo $1
-echo "------------------------ DEBUG LINE ------------------------"
 
 while true; do
     case "$1" in
