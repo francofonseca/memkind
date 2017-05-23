@@ -235,7 +235,7 @@ echo "------------------------ DEBUG LINE ------------------------"
 echo $@
 echo "------------------------ DEBUG LINE ------------------------"
 # Execute getopt
-ARGS=$(getopt -o T:c:f:l:hdmgx: -- "$@");
+ARGS=$(getopt -o T:c:f:l:hdmgxp: -- "$@");
 
 #Bad arguments
 if [ $? -ne 0 ];
