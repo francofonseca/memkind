@@ -305,7 +305,7 @@ while true; do
             fi
             '
             #show_skipped_tests $DISABLE_PYTEST_TESTS
-            shift
+            shift 2;
             ;;
         -x)
             echo "Skipping some tests on demand '$2'"
