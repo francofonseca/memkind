@@ -281,6 +281,9 @@ while true; do
             else
                 SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not test_TC_MEMKIND_2MBPages_"
             fi
+            echo "----------------------- PYTESTS 1 -----------------------"
+            echo $SKIPPED_PYTESTS
+            echo "----------------------- PYTESTS 1 -----------------------"
             show_skipped_tests "test_TC_MEMKIND_2MBPages_"
             shift
             ;;
@@ -290,11 +293,17 @@ while true; do
                 SKIPPED_PYTESTS=" and not hbw_detection"
             else
                 SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not hbw_detection"
-            fi            
+            fi
+            echo "----------------------- PYTESTS 2 -----------------------"
+            echo $SKIPPED_PYTESTS
+            echo "----------------------- PYTESTS 2 -----------------------"
             show_skipped_tests "test_TC_MEMKIND_hbw_detection"
             shift
             ;;
         -p)
+            echo "----------------------- PYTESTS 3 -----------------------"
+            echo $SKIPPED_PYTESTS
+            echo "----------------------- PYTESTS 3 -----------------------"
             : '
             if [[ $SKIPPED_PYTESTS = "" ]]; then
                 SKIPPED_PYTESTS="and not test_TC_MEMKIND_autohbw"
