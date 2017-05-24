@@ -304,14 +304,14 @@ while true; do
             echo "----------------------- PYTESTS 3 -----------------------"
             echo $SKIPPED_PYTESTS
             echo "----------------------- PYTESTS 3 -----------------------"
-            : '
+            
             if [[ $SKIPPED_PYTESTS = "" ]]; then
                 SKIPPED_PYTESTS="and not test_TC_MEMKIND_autohbw"
             else
                 SKIPPED_PYTESTS=$SKIPPED_PYTESTS" test_TC_MEMKIND_autohbw"
             fi
             show_skipped_tests "test_TC_MEMKIND_autohbw"
-            '
+            
             : '
             echo "--------------- DEBUG LINE ---------------"
             echo "Skipping some python tests '$DISABLE_PYTEST_TESTS' "
