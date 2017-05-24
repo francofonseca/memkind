@@ -306,9 +306,9 @@ while true; do
             echo "----------------------- PYTESTS 3 -----------------------"
             
             if [[ $SKIPPED_PYTESTS = "" ]]; then
-                SKIPPED_PYTESTS="and not test_TC_MEMKIND_autohbw"
+                SKIPPED_PYTESTS="and not autohbw"
             else
-                SKIPPED_PYTESTS=$SKIPPED_PYTESTS" test_TC_MEMKIND_autohbw"
+                SKIPPED_PYTESTS=$SKIPPED_PYTESTS"and not autohbw"
             fi
             show_skipped_tests "test_TC_MEMKIND_autohbw"
             
