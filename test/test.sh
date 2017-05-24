@@ -308,7 +308,7 @@ while true; do
             if [[ $SKIPPED_PYTESTS = "" ]]; then
                 SKIPPED_PYTESTS="and not autohbw"
             else
-                SKIPPED_PYTESTS=$SKIPPED_PYTESTS"and not autohbw"
+                SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not autohbw"
             fi
             show_skipped_tests "test_TC_MEMKIND_autohbw"
             
