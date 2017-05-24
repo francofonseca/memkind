@@ -302,6 +302,9 @@ while true; do
             else
                 SKIPPED_PYTESTS=$SKIPPED_PYTESTS$DISABLE_PYTEST_TESTS
             fi
+            echo "------------------- LINE IN -P -------------------"
+            echo $SKIPPED_PYTESTS
+            echo "------------------- LINE IN -P -------------------"
             show_skipped_tests "test_TC_MEMKIND_autohbw"
             shift 2;
             ;;
