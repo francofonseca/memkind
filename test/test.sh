@@ -295,6 +295,7 @@ while true; do
             shift
             ;;
         -p)
+            : '
             echo "--------------- DEBUG LINE ---------------"
             echo "Skipping some python tests '$DISABLE_PYTEST_TESTS' "
             if [[ $SKIPPED_PYTESTS == "" ]]; then
@@ -306,6 +307,7 @@ while true; do
             echo $SKIPPED_PYTESTS
             echo "------------------- LINE IN -P -------------------"
             show_skipped_tests "test_TC_MEMKIND_autohbw"
+            '
             shift 2;
             ;;
         -x)
