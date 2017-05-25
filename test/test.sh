@@ -302,10 +302,10 @@ while true; do
             ;;
         -p)
             echo "----------------------- PYTESTS 3 -----------------------"
-            echo $SKIPPED_PYTESTS
+            echo $2
             echo "----------------------- PYTESTS 3 -----------------------"
             SKIPPED_PYTESTS=$SKIPPED_PYTESTS$2
-            show_skipped_tests $2
+            show_skipped_tests "$2"
             shift 2;
             ;;
         -x)
