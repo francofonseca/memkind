@@ -304,13 +304,8 @@ while true; do
             echo "----------------------- PYTESTS 3 -----------------------"
             echo $SKIPPED_PYTESTS
             echo "----------------------- PYTESTS 3 -----------------------"
-            
-            if [[ $SKIPPED_PYTESTS = "" ]]; then
-                SKIPPED_PYTESTS=$DISABLE_PYTEST_TESTS
-            else
-                SKIPPED_PYTESTS=$SKIPPED_PYTESTS$DISABLE_PYTEST_TESTS
-            fi
-            show_skipped_tests $DISABLE_PYTEST_TESTS
+            SKIPPED_PYTESTS=$SKIPPED_PYTESTS$2
+            show_skipped_tests $2
             shift 2;
             ;;
         -x)
