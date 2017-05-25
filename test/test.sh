@@ -302,7 +302,7 @@ while true; do
             ;;
         -p)
             echo "----------------------- PYTESTS 3 -----------------------"
-            echo $2
+            echo "$2"
             echo "----------------------- PYTESTS 3 -----------------------"
             SKIPPED_PYTESTS=$SKIPPED_PYTESTS$2
             show_skipped_tests "$2"
