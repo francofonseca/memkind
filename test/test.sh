@@ -233,7 +233,7 @@ if [[ $ret == "" ]]; then
 fi
 
 echo "--------------- ARGS ---------------"
-echo "$@"
+echo $@
 echo "--------------- ARGS ---------------"
 
 # Execute getopt
