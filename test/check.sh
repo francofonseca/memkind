@@ -53,7 +53,7 @@ fi
 if [[ -n $DISABLE_PYTEST_TESTS ]]; then
         echo "------------------ CHECK LINE ------------------"
         echo "Python test disabling env var detected"
-        params="$params -p $DISABLE_PYTEST_TESTS"
+        params="$params -p \"$DISABLE_PYTEST_TESTS\""
 fi
 
 if [[ -n $DISABLE_GTEST_TESTS ]]; then
