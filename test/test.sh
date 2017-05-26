@@ -231,8 +231,13 @@ if [[ $ret == "" ]]; then
     export MEMKIND_HBW_NODES=1
     TEST_PREFIX="numactl --membind=0 %s"
 fi
+
+echo "--------------- ARGS ---------------"
+echo $ARGS
+echo "--------------- ARGS ---------------"
+
 # Execute getopt
-ARGS=$(getopt -o T:c:f:l:hdmgx:p: -- "$@");
+ARGS=$(getopt -o T:c:f:l:hdmgx:hdmgp: -- "$@");
 
 #Bad arguments
 if [ $? -ne 0 ];
@@ -302,7 +307,7 @@ while true; do
             ;;
         -p)
             echo "----------------------- PYTESTS 3 -----------------------"
-            echo "$3"
+            echo "$2"
             echo "----------------------- PYTESTS 3 -----------------------"
             SKIPPED_PYTESTS=$SKIPPED_PYTESTS$2
             show_skipped_tests "$2"
