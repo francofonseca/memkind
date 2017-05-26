@@ -237,7 +237,7 @@ echo "$@"
 echo "--------------- ARGS ---------------"
 
 # Execute getopt
-ARGS=$(getopt -o T:c:f:l:hdmgx:hdmgp: -- "$@");
+ARGS=$(getopt -o T:c:f:l:hdmgx:p: -- "$@");
 
 #Bad arguments
 if [ $? -ne 0 ];
