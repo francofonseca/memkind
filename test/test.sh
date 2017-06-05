@@ -234,7 +234,7 @@ fi
 
 OPTIND=1
 
-while getopts "T:c:f:l:hdmgx:p:" opt; do
+while getopts "T:c:f:l:dmgx:p:h:" opt; do
         echo "opt = $opt";
         #echo "optarg = $OPTARG";
         case "$opt" in
