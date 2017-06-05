@@ -133,6 +133,7 @@ function show_skipped_tests()
 
 function execute_gtest()
 {
+        return 0
     ret_val=1
     TESTCMD=$1
     TEST=$2
@@ -183,6 +184,7 @@ function execute_pytest()
             return
         fi
     fi
+    echo "SKIPPING $SKIPPED_PYTESTS"
     # Concatenate test command
     TESTCMD=$(printf "$TESTCMD" "$TEST$SKIPPED_PYTESTS")
     # And test prefix if applicable
@@ -215,7 +217,7 @@ function execute_pytest()
 numactl --hardware | grep "^node 1" > /dev/null
 if [ $? -ne 0 ]; then
     echo "ERROR: $0 requires a NUMA enabled system with more than one node."
-    exit 1
+    #exit 1
 fi
 
 if [ ! -f /usr/bin/memkind-hbw-nodes ]; then
@@ -232,49 +234,25 @@ if [[ $ret == "" ]]; then
     TEST_PREFIX="numactl --membind=0 %s"
 fi
 
-echo "--------------- ARGS ---------------"
-echo $@
-echo "--------------- ARGS ---------------"
+OPTIND=1
 
-# Execute getopt
-ARGS=$(getopt -o T:c:f:l:hdmgx:p: -- "$@");
-
-#Bad arguments
-if [ $? -ne 0 ];
-then
-    usage
-fi
-
-eval set -- "$ARGS";
-
-echo "--------------- DEBUG LINE1 ---------------"
-echo $ARGS
-echo "--------------- DEBUG LINE1 ---------------"
-
-while true; do
-    
-    echo "--------------- DEBUG LINE1 ---------------"
-    echo $1
-    echo "--------------- DEBUG LINE1 ---------------"
-
-    case "$1" in
-        -T)
-            TEST_PATH=$2;
-            shift 2;
+while getopts "T:c:f:l:hdmgx:p:" opt; do
+        echo "opt = $opt";
+        echo "optarg = $OPTARG";
+        case "$opt" in
+        T)
+            TEST_PATH=$OPTARG;
             ;;
-        -c)
-            CSV=$2;
-            shift 2;
+        c)
+            CSV=$OPTARG;
             ;;
-        -f)
-            TEST_FILTER=$2;
-            shift 2;
+        f)
+            TEST_FILTER=$OPTARG;
             ;;
-        -l)
-            LOG_FILE=$2;
-            shift 2;
+        l)
+            LOG_FILE=$OPTARG;
             ;;
-        -m)
+        m)
             echo "Skipping tests that require 2MB pages due to unsatisfactory system conditions"
             if [[ "$SKIPPED_GTESTS" == "" ]]; then
                 SKIPPED_GTESTS=":-*test_TC_MEMKIND_2MBPages_*"
@@ -290,9 +268,8 @@ while true; do
             echo $SKIPPED_PYTESTS
             echo "----------------------- PYTESTS 1 -----------------------"
             show_skipped_tests "test_TC_MEMKIND_2MBPages_"
-            shift
             ;;
-        -d)
+        d)
             echo "Skipping tests that detect high bandwidth memory nodes due to unsatisfactory system conditions"
             if [[ $SKIPPED_PYTESTS == "" ]]; then
                 SKIPPED_PYTESTS=" and not hbw_detection"
@@ -303,36 +280,35 @@ while true; do
             echo $SKIPPED_PYTESTS
             echo "----------------------- PYTESTS 2 -----------------------"
             show_skipped_tests "test_TC_MEMKIND_hbw_detection"
-            shift
             ;;
-        -p)
+        p)
             echo "----------------------- PYTESTS 3 -----------------------"
             echo "$2"
             echo "----------------------- PYTESTS 3 -----------------------"
-            SKIPPED_PYTESTS=$SKIPPED_PYTESTS$2
-            show_skipped_tests "$2"
-            shift 2;
-            ;;
-        -x)
-            echo "Skipping some tests on demand '$2'"
-            if [[ $SKIPPED_GTESTS == "" ]]; then
-                SKIPPED_GTESTS=":-"$2
-            else
-                SKIPPED_GTESTS=$SKIPPED_GTESTS":"$2
-            fi
-            show_skipped_tests "$2"
-            shift 2;
-            ;;
-        -h)
-            usage;
-            shift;
-            ;;
-        --)
-            shift;
+            SKIPPED_PYTESTS=$SKIPPED_PYTESTS$OPTARG
+            show_skipped_tests "$OPTARG"
             break;
+            ;;
+        x)
+            echo "Skipping some tests on demand '$OPTARG'"
+            if [[ $SKIPPED_GTESTS == "" ]]; then
+                SKIPPED_GTESTS=":-"$OPTARG
+            else
+                SKIPPED_GTESTS=$SKIPPED_GTESTS":"$OPTARG
+            fi
+            show_skipped_tests "$OPTARG"
+            ;;
+        h)
+            usage;
             ;;
     esac
 done
+
+shift $((OPTIND-1))
+
+[ "$1" = "--" ] && shift
+
+echo "Leftovers: $@"
 
 TEST_PATH=`normalize_path "$TEST_PATH"`
 
