@@ -215,7 +215,7 @@ function execute_pytest()
 numactl --hardware | grep "^node 1" > /dev/null
 if [ $? -ne 0 ]; then
     echo "ERROR: $0 requires a NUMA enabled system with more than one node."
-    #exit 1
+    exit 1
 fi
 
 if [ ! -f /usr/bin/memkind-hbw-nodes ]; then
@@ -234,7 +234,7 @@ fi
 
 OPTIND=1
 
-while getopts "T:c:f:l:dmgx:p:h:" opt; do
+while getopts "T:c:f:l:hdmgx:p:" opt; do
         echo "opt = $opt";
         #echo "optarg = $OPTARG";
         case "$opt" in
