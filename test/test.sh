@@ -236,7 +236,7 @@ OPTIND=1
 
 while getopts "T:c:f:l:hdmgx:p:" opt; do
         echo "opt = $opt";
-        echo "optarg = $OPTARG";
+        #echo "optarg = $OPTARG";
         case "$opt" in
         T)
             TEST_PATH=$OPTARG;
