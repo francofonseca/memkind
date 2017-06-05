@@ -54,7 +54,6 @@ if [[ $ret == "" ]]; then
 fi
 
 if [[ -n "$DISABLE_PYTEST_TESTS" ]]; then
-        echo "------------------ CHECK LINE ------------------"
         test_cmd=$test_cmd" -p \"$DISABLE_PYTEST_TESTS\""
         echo "Python test disabling env var detected $DISABLE_PYTEST_TESTS"
 fi

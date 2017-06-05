@@ -66,7 +66,6 @@ OPTIONS
         skip tests that are passed as value
     -h,
         parameter added to display script usage
-    
 EOF
 }
 
@@ -208,7 +207,7 @@ function execute_pytest()
         emit "$OUTPUT"
         echo $RESULT >> $CSV
     else
-    echo $RESULT
+        echo $RESULT
     fi
     return $ret
 }
@@ -263,9 +262,6 @@ while getopts "T:c:f:l:hdmgx:p:" opt; do
             else
                 SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not test_TC_MEMKIND_2MBPages_"
             fi
-            echo "----------------------- PYTESTS 1 -----------------------"
-            echo $SKIPPED_PYTESTS
-            echo "----------------------- PYTESTS 1 -----------------------"
             show_skipped_tests "test_TC_MEMKIND_2MBPages_"
             ;;
         d)
@@ -275,15 +271,9 @@ while getopts "T:c:f:l:hdmgx:p:" opt; do
             else
                 SKIPPED_PYTESTS=$SKIPPED_PYTESTS" and not hbw_detection"
             fi
-            echo "----------------------- PYTESTS 2 -----------------------"
-            echo $SKIPPED_PYTESTS
-            echo "----------------------- PYTESTS 2 -----------------------"
             show_skipped_tests "test_TC_MEMKIND_hbw_detection"
             ;;
         p)
-            echo "----------------------- PYTESTS 3 -----------------------"
-            echo "$2"
-            echo "----------------------- PYTESTS 3 -----------------------"
             SKIPPED_PYTESTS=$SKIPPED_PYTESTS$OPTARG
             show_skipped_tests "$OPTARG"
             break;
