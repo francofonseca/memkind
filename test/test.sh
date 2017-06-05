@@ -133,7 +133,6 @@ function show_skipped_tests()
 
 function execute_gtest()
 {
-        return 0
     ret_val=1
     TESTCMD=$1
     TEST=$2
