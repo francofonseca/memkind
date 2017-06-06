@@ -285,7 +285,7 @@ while getopts "T:c:f:l:hdmgx:p:" opt; do
             else
                 SKIPPED_GTESTS=$SKIPPED_GTESTS":"$OPTARG
             fi
-            show_skipped_tests "$OPTARG"
+            show_skipped_tests "$DISABLE_GTEST_TESTS"
             ;;
         h)
             usage;
