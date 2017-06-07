@@ -23,8 +23,6 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-set -x
-
 err=0
 basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 test_cmd=$basedir/test.sh
@@ -47,7 +45,6 @@ if [ ! -x /usr/bin/memkind-hbw-nodes ]; then
         fi
 fi
 ret=$(memkind-hbw-nodes)
-echo $ret
 if [[ $ret == "" ]]; then
         # Add parameter that disables tests that detects high bandwidth nodes
         test_cmd=$test_cmd" -d"
@@ -63,7 +60,6 @@ if [[ -n "$DISABLE_PYTEST_TESTS" ]]; then
         echo "Python test disabling env var detected $DISABLE_PYTEST_TESTS"
 fi
 
-echo "test_cmd = $test_cmd"
 eval $test_cmd
 
 err=${PIPESTATUS[0]}

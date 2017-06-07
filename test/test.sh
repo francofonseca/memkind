@@ -182,7 +182,6 @@ function execute_pytest()
             return
         fi
     fi
-    echo "SKIPPING $SKIPPED_PYTESTS"
     # Concatenate test command
     TESTCMD=$(printf "$TESTCMD" "$TEST$SKIPPED_PYTESTS")
     # And test prefix if applicable
@@ -235,8 +234,6 @@ fi
 OPTIND=1
 
 while getopts "T:c:f:l:hdmgx:p:" opt; do
-        echo "opt = $opt";
-        echo "optarg = $OPTARG";
         case "$opt" in
         T)
             TEST_PATH=$OPTARG;
@@ -292,12 +289,6 @@ while getopts "T:c:f:l:hdmgx:p:" opt; do
             ;;
     esac
 done
-
-shift $((OPTIND-1))
-
-[ "$1" = "--" ] && shift
-
-echo "Leftovers: $@"
 
 TEST_PATH=`normalize_path "$TEST_PATH"`
 
