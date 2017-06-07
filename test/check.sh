@@ -53,14 +53,14 @@ if [[ $ret == "" ]]; then
         test_cmd=$test_cmd" -d"
 fi
 
-if [[ -n "$DISABLE_PYTEST_TESTS" ]]; then
-        test_cmd=$test_cmd" -p \"$DISABLE_PYTEST_TESTS\""
-        echo "Python test disabling env var detected $DISABLE_PYTEST_TESTS"
-fi
-
 if [[ -n $DISABLE_GTEST_TESTS ]]; then
         echo "On demand test disabling detected!"
         test_cmd=$test_cmd" -x $DISABLE_GTEST_TESTS"
+fi
+
+if [[ -n "$DISABLE_PYTEST_TESTS" ]]; then
+        test_cmd=$test_cmd" -p \"$DISABLE_PYTEST_TESTS\""
+        echo "Python test disabling env var detected $DISABLE_PYTEST_TESTS"
 fi
 
 echo "test_cmd = $test_cmd"
