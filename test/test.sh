@@ -273,7 +273,6 @@ while getopts "T:c:f:l:hdmgx:p:" opt; do
         p)
             SKIPPED_PYTESTS=$SKIPPED_PYTESTS$OPTARG
             show_skipped_tests "$OPTARG"
-            break;
             ;;
         x)
             echo "Skipping some tests on demand '$OPTARG'"
